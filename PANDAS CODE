@@ -1,0 +1,41 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create a sample dataset
+data = {
+    'Month': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    'Sales': [1500, 1600, 1700, 1800, 1750, 1650, 1550, 1600, 1700, 1800, 1900, 2000],
+    'Expenses': [1200, 1250, 1300, 1350, 1300, 1250, 1200, 1250, 1300, 1350, 1400, 1450],
+    'Profit': [300, 350, 400, 450, 450, 400, 350, 350, 400, 450, 500, 550]
+}
+
+df = pd.DataFrame(data)
+
+# Plotting
+fig, axs = plt.subplots(3, 1, figsize=(10, 15))
+
+# Line graph
+axs[0].plot(df['Month'], df['Sales'], label='Sales', marker='o')
+axs[0].plot(df['Month'], df['Expenses'], label='Expenses', marker='o')
+axs[0].set_title('Monthly Sales and Expenses')
+axs[0].set_xlabel('Month')
+axs[0].set_ylabel('Amount')
+axs[0].legend()
+axs[0].grid(True)
+
+# Bar graph
+axs[1].bar(df['Month'], df['Profit'], color='skyblue')
+axs[1].set_title('Monthly Profit')
+axs[1].set_xlabel('Month')
+axs[1].set_ylabel('Profit')
+axs[1].grid(True)
+
+# Scatter plot
+axs[2].scatter(df['Sales'], df['Profit'], color='red')
+axs[2].set_title('Sales vs Profit')
+axs[2].set_xlabel('Sales')
+axs[2].set_ylabel('Profit')
+axs[2].grid(True)
+
+plt.tight_layout()
+plt.show()
